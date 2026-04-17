@@ -1,36 +1,48 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { NavLink } from 'react-router-dom'
 import { slides } from '../data/products'
 
 export default function HeroSlider() {
-  const [active, setActive] = useState(0)
+  const [index, setIndex] = useState(0)
 
   useEffect(() => {
-    const timer = setInterval(() => setActive((prev) => (prev + 1) % slides.length), 4500)
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % slides.length)
+    }, 5000)
     return () => clearInterval(timer)
   }, [])
 
   return (
-    <section className="heroSection">
-      {slides.map((slide, index) => (
-        <article key={slide.title} className={`heroSlide ${active === index ? 'active' : ''}`}>
-          <img src={slide.image} alt={slide.title} />
-          <div className="heroOverlay"></div>
-          <div className="heroContent glass">
-            <p className="eyebrow">New collection</p>
-            <h2>{slide.title}</h2>
-            <p>{slide.subtitle}</p>
-            <div className="heroButtons">
-              <Link className="primaryBtn" to="/shop">Shop now</Link>
-              <Link className="secondaryBtn" to="/about">Discover the brand</Link>
+    <section className="heroWrap container">
+      <div className="heroFrame luxuryHeroFrame">
+        {slides.map((slide, i) => (
+          <article key={slide.title} className={`heroSlide ${i === index ? 'active' : ''}`}>
+            <img src={slide.image} alt={slide.title} className="heroImage" />
+            <div className="heroShade luxuryHeroShade" />
+
+            <div className="heroLuxuryContent">
+              <div className="heroEditorialCard glassPanel">
+                <p className="miniLabel tealText">Sweater Weather</p>
+                <h1>{slide.title}</h1>
+                <p>{slide.text}</p>
+              <div className="heroActions">
+                <NavLink to="/shop" className="peachBtn">Discover the collection</NavLink>
+                <NavLink to="/about" className="ghostBtn">Our materials</NavLink>
+              </div>
             </div>
           </div>
-        </article>
-      ))}
-      <div className="dots">
-        {slides.map((_, index) => (
-          <button key={index} className={active === index ? 'dot activeDot' : 'dot'} onClick={() => setActive(index)}></button>
+          </article>
         ))}
+
+        <div className="heroControls luxuryHeroControls">
+          <button className="circleBtn" onClick={() => setIndex((prev) => (prev - 1 + slides.length) % slides.length)} aria-label="Previous slide">
+            <ChevronLeft size={18} />
+          </button>
+          <button className="circleBtn" onClick={() => setIndex((prev) => (prev + 1) % slides.length)} aria-label="Next slide">
+            <ChevronRight size={18} />
+          </button>
+        </div>
       </div>
     </section>
   )

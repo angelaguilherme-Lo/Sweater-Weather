@@ -1,7 +1,7 @@
 {
-  "name": "sweater-weather-v2",
+  "name": "sweater-weather-website",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,14 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@stripe/react-stripe-js": "^6.1.0",
-    "@stripe/stripe-js": "^7.9.0",
+    "@studio-freight/lenis": "^1.0.42",
+    "lucide-react": "^0.511.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^7.9.4"
+    "react-router-dom": "^6.30.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.1",
-    "vite": "^5.4.8"
+    "@vitejs/plugin-react": "^4.4.1",
+    "vite": "^5.4.19"
   }
 }

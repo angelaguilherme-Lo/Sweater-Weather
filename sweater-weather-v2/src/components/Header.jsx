@@ -1,75 +1,77 @@
-import { Link, NavLink } from 'react-router-dom'
+import { useState } from 'react'
+import { Heart, LogIn, Menu, ShoppingBag, X } from 'lucide-react'
+import { NavLink } from 'react-router-dom'
 import { useShop } from '../context/ShopContext'
 
-function CartIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="cartSvg">
-      <path
-        d="M3 4h2l2.2 10.2a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8L21 7H7"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx="10" cy="19" r="1.6" fill="currentColor" />
-      <circle cx="18" cy="19" r="1.6" fill="currentColor" />
-    </svg>
-  )
-}
-
-export default function Header({ menuOpen, setMenuOpen, onLoginOpen }) {
-  const { cart, wishlist, theme, setTheme } = useShop()
+export default function Header() {
+  const [open, setOpen] = useState(false)
+  const { cart, wishlist } = useShop()
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0)
 
+  const links = [
+    ['/', 'Home'],
+    ['/shop', 'Collections'],
+    ['/about', 'About'],
+    ['/contact', 'Contact'],
+  ]
+
   return (
-    <header className="header glass luxuryHeader">
-      <Link to="/" className="logoWrap premiumLogoWrap">
-        <div className="logoMark refinedLogo" aria-label="Sweater Weather logo">
-          <span>SW</span>
+    <>
+      <header className="siteHeader">
+        <div className="container headerInner luxuryHeader glassPanel">
+          <NavLink to="/" className="brandBlock" aria-label="Sweater Weather home">
+            <img src="/images/sweather-weather-logo.png" alt="Sweater Weather logo" className="brandLogoLarge" />
+            <div>
+              <p className="miniLabel">Luxury clothing for women</p>
+              <div className="brandWordmark">Sweater Weather</div>
+            </div>
+          </NavLink>
+
+          <nav className="mainNav desktopNav luxuryNav">
+            {links.map(([to, label]) => (
+              <NavLink key={to} to={to} className={({ isActive }) => `navItem luxuryNavItem ${isActive ? 'active' : ''}`}>
+                <span>{label}</span>
+              </NavLink>
+            ))}
+          </nav>
+
+          <div className="desktopTools luxuryTools">
+            <NavLink to="/wishlist" className="toolBtn luxuryToolBtn">
+              <Heart size={18} /> <span>Wishlist</span> <strong>{wishlist.length}</strong>
+            </NavLink>
+            <NavLink to="/login" className="toolBtn luxuryToolBtn">
+              <LogIn size={18} /> <span>Login</span>
+            </NavLink>
+            <NavLink to="/cart" className="ctaBtn luxuryCartBtn">
+              <ShoppingBag size={18} /> <span>Cart</span> <strong>{cartCount}</strong>
+            </NavLink>
+          </div>
+
+          <button className="menuBtn mobileOnly" onClick={() => setOpen(true)} aria-label="Open menu">
+            <Menu size={22} />
+          </button>
         </div>
-        <div className="brandBlock">
-          <p className="eyebrow">Women's Design Clothing </p>
-          <h1>Sweater Weather</h1>
+      </header>
+
+      <div className={`mobileBackdrop ${open ? 'show' : ''}`} onClick={() => setOpen(false)} />
+      <aside className={`mobileMenu glassPanel ${open ? 'show' : ''}`}>
+        <div className="mobileTop">
+          <strong>Navigation</strong>
+          <button className="menuBtn" onClick={() => setOpen(false)} aria-label="Close menu">
+            <X size={22} />
+          </button>
         </div>
-      </Link>
-
-      <nav className={`nav premiumNav ${menuOpen ? 'open' : ''}`}>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/shop">Shop</NavLink>
-        <NavLink to="/about">About Us</NavLink>
-        <NavLink to="/contact">Contact Us</NavLink>
-        <NavLink to="/wishlist">Wish List</NavLink>
-      </nav>
-
-      <div className="headerActions premiumActions">
-        <button className="iconBtn" onClick={onLoginOpen}>Login</button>
-
-        <button
-          className="iconBtn"
-          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-        >
-          {theme === 'light' ? 'Dark mode' : 'Light mode'}
-        </button>
-
-        <Link className="iconBtn" to="/wishlist">
-          Wish List <span>{wishlist.length}</span>
-        </Link>
-
-        <Link className="cartBtn" to="/cart">
-          <CartIcon />
-          <span>Cart</span>
-          <strong>{cartCount}</strong>
-        </Link>
-
-        <button
-          className="hamburger"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </header>
+        <div className="mobileLinks">
+          {links.map(([to, label]) => (
+            <NavLink key={to} to={to} className="mobileLink" onClick={() => setOpen(false)}>
+              {label}
+            </NavLink>
+          ))}
+          <NavLink to="/wishlist" className="mobileLink" onClick={() => setOpen(false)}>Wishlist</NavLink>
+          <NavLink to="/login" className="mobileLink" onClick={() => setOpen(false)}>Login</NavLink>
+          <NavLink to="/cart" className="mobileLink" onClick={() => setOpen(false)}>Cart</NavLink>
+        </div>
+      </aside>
+    </>
   )
 }

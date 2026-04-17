@@ -1,80 +1,44 @@
 export default function AboutPage() {
   return (
-    <section className="section aboutLuxuryPage">
-      <div className="aboutHero glass">
-        <div className="aboutHeroTop">
-          <p className="eyebrow">About Sweater Weather</p>
-          <span className="aboutLine"></span>
+    <section className="container pageBlock">
+      <div className="aboutHero glassPanel topGap aboutLayout">
+        <div>
+          <p className="miniLabel tealText">About us</p>
+          <h1 className="pageTitle">Authentic premium knitwear with warmth at its core</h1>
+          <p>
+            Sweater Weather is a women&apos;s clothing website dedicated to sweaters, tunics and knits that feel inviting, elegant and easy to wear. Our boutique story is built around soft silhouettes, timeless comfort and a modern premium presentation.
+          </p>
+          <p>
+            We focus on material-led style and honest wardrobe essentials that customers can imagine wearing every day, from relaxed mornings to polished city evenings.
+          </p>
         </div>
-
-        <div className="aboutHeroGrid">
-          <div>
-            <h2>
-              Luxury knitwear and warm essentials with a modern feminine point of
-              view.
-            </h2>
-          </div>
-
-          <div className="aboutIntroCopy">
-            <p>
-              Sweater Weather is a boutique-inspired online store shaped around
-              refined comfort, premium textures and elevated everyday dressing.
-            </p>
-            <p>
-              We curate premium sweatshirts, elegant tunics and rich knitwear
-              sweaters for women who want softness, polish and effortless warmth
-              in one wardrobe.
-            </p>
-          </div>
-        </div>
+        <img src="/images/ihor-rapita-GlEMt2rjaEs-unsplash.jpg" alt="Premium striped sweater styling" className="aboutImage" />
       </div>
 
-      <div className="aboutLuxuryGrid">
-        <article className="glass aboutFeatureCard">
-          <p className="eyebrow">Our signature</p>
-          <h3>Soft structure</h3>
+      <div className="aboutColumns sectionBlock">
+        <article className="glassPanel infoPane">
+          <p className="miniLabel">Materials we love</p>
+          <h2>Cashmere, cotton and linen</h2>
           <p>
-            Premium sweatshirts with elevated shape, clean lines and a refined
-            relaxed fit. Allergy free  and gentle  touch on the skin. 
+            Cashmere inspires our most elevated knitwear mood with exceptional softness, warmth and a luxurious finish that feels comforting against the skin.
+          </p>
+          <p>
+            Cotton adds breathable everyday ease, clean structure and natural comfort, making it ideal for premium sweaters and transitional tunics.
+          </p>
+          <p>
+            Linen brings airy lightness, texture and relaxed refinement, especially in tunic silhouettes designed for warmer seasons and elegant layering.
           </p>
         </article>
-
-        <article className="glass aboutFeatureCard">
-          <p className="eyebrow">Our materials</p>
-          <h3>Warm texture</h3>
+        <article className="glassPanel infoPane">
+          <p className="miniLabel">Our customer promise</p>
+          <h2>A more engaging boutique experience</h2>
           <p>
-            Knitwear selected for softness, depth and tactile richness in warm
-            seasonal tones. Materials such as cotton, cashmere, and linen are our foundation.
+            We want visitors to feel welcomed, inspired and confident while browsing. That is why the website uses calm spacing, warm imagery, smooth scrolling, desktop-friendly navigation and clearer storytelling about the products and materials.
+          </p>
+          <p>
+            Every collection is chosen to balance softness, practicality and authentic premium character rather than a cold catalog feeling.
           </p>
         </article>
-
-        <article className="glass aboutFeatureCard">
-          <p className="eyebrow">Our mood</p>
-          <h3>Modern femininity</h3>
-          <p>
-            Tunics and layering pieces designed to feel graceful, wearable and
-            quietly luxurious.
-          </p>
-        </article>
-      </div>
-
-      <div className="aboutStatementRow">
-        <div className="glass aboutStatementCard">
-          <p className="eyebrow">Brand note</p>
-          <blockquote>
-            “We believe elegance should feel warm, wearable and beautifully
-            effortless.”
-          </blockquote>
-        </div>
-
-        <div className="glass aboutChecklistCard">
-          <p className="eyebrow">What defines us</p>
-          <ul>
-            <li>Premium silhouettes with boutique-inspired polish</li>
-            <li>Comfort-led pieces designed for everyday elegance</li>
-            <li>Warm neutral palettes and refined seasonal styling</li>
-          </ul>
-        </div>
       </div>
     </section>
   )

@@ -1,19 +1,31 @@
-import ProductCard from '../components/ProductCard'
 import { useShop } from '../context/ShopContext'
 
 export default function WishlistPage() {
   const { wishlist } = useShop()
 
   return (
-    <section className="section">
-      <div className="sectionHeading">
-        <p className="eyebrow">Wish list</p>
-        <h2>Your saved premium pieces</h2>
+    <section className="container pageBlock">
+      <div className="topGap sectionIntro">
+        <p className="miniLabel tealText">Wishlist</p>
+        <h1 className="pageTitle">Your saved favorites</h1>
       </div>
-      <div className="productGrid">
-        {wishlist.length
-          ? wishlist.map((product) => <ProductCard key={product.id} product={product} />)
-          : <p className="emptyState glass">No saved items yet.</p>}
+      <div className="glassPanel infoPane">
+        {wishlist.length === 0 ? (
+          <p>Your wishlist is empty right now. Save your favorite sweaters, tunics and knits as you browse.</p>
+        ) : (
+          <div className="savedGrid">
+            {wishlist.map((item) => (
+              <article key={item.id} className="savedItem">
+                <img src={item.image} alt={item.name} />
+                <div>
+                  <h3>{item.name}</h3>
+                  <p>{item.category}</p>
+                </div>
+                <strong>€{item.price}</strong>
+              </article>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )
