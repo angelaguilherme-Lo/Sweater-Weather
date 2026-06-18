@@ -7,6 +7,7 @@ import ContactPage from './pages/ContactPage'
 import WishlistPage from './pages/WishlistPage'
 import CartPage from './pages/CartPage'
 import LoginPage from './pages/LoginPage'
+import CheckoutPage from './pages/CheckoutPage'
 import ProtectedRoute from './components/ProtectedRoute'
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="checkout" element={<CheckoutPage />} />
       </Route>
     </Routes>
   )
