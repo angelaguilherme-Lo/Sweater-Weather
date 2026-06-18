@@ -620,7 +620,7 @@ h1, h2, h3, .brandWordmark, .pageTitle {
   border-radius: 999px;
 }
 
-/* About / contact / cart (unchanged from your file) */
+/* About / contact / cart (unchanged from the file) */
 
 .aboutLayout {
   display: grid;
@@ -687,6 +687,33 @@ h1, h2, h3, .brandWordmark, .pageTitle {
   border-radius: 0.9rem;
   padding: 0 16px;
   outline: none;
+}
+
+.fieldGroup {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.fieldGroup span {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.formError {
+  color: #b42318;
+  font-size: 0.92rem;
+  margin-top: 0.25rem;
+}
+
+.loginHint {
+  margin-top: 1rem;
+  font-size: 0.92rem;
+  opacity: 0.8;
+}
+
+.mobileLogoutBtn {
+  width: 100%;
+  text-align: left;
 }
 
 /* Footer */

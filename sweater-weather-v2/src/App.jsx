@@ -7,6 +7,7 @@ import ContactPage from './pages/ContactPage'
 import WishlistPage from './pages/WishlistPage'
 import CartPage from './pages/CartPage'
 import LoginPage from './pages/LoginPage'
+import ProtectedRoute from './components/ProtectedRoute'
 
 export default function App() {
   return (
@@ -16,9 +17,23 @@ export default function App() {
         <Route path="shop" element={<ShopPage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="contact" element={<ContactPage />} />
-        <Route path="wishlist" element={<WishlistPage />} />
-        <Route path="cart" element={<CartPage />} />
         <Route path="login" element={<LoginPage />} />
+        <Route
+          path="wishlist"
+          element={
+            <ProtectedRoute>
+              <WishlistPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="cart"
+          element={
+            <ProtectedRoute>
+              <CartPage />
+            </ProtectedRoute>
+          }
+        />
       </Route>
     </Routes>
   )
