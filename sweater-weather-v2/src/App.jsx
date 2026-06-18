@@ -7,6 +7,7 @@ import ContactPage from './pages/ContactPage'
 import WishlistPage from './pages/WishlistPage'
 import CartPage from './pages/CartPage'
 import LoginPage from './pages/LoginPage'
+import CheckoutPage from './pages/CheckoutPage'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="contact" element={<ContactPage />} />
         <Route path="wishlist" element={<WishlistPage />} />
         <Route path="cart" element={<CartPage />} />
+        <Route path="checkout" element={<CheckoutPage />} />
         <Route path="login" element={<LoginPage />} />
       </Route>
     </Routes>

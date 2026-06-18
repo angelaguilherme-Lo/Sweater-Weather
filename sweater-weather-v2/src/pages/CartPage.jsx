@@ -1,4 +1,5 @@
 import { Minus, Plus, ShieldCheck, Trash2 } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { useShop } from '../context/ShopContext'
 
 function VisaMark() {
@@ -110,7 +111,7 @@ export default function CartPage() {
             <span>Secure checkout experience</span>
           </div>
 
-          <button className="peachBtn fullBtn luxuryCheckoutBtn">Proceed to checkout</button>
+          <Link to="/checkout" className="peachBtn fullBtn luxuryCheckoutBtn">Proceed to checkout</Link>
         </aside>
       </div>
     </section>
