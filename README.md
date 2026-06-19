@@ -89,8 +89,8 @@ The cart supports:
 
 ### Checkout
 The checkout area includes:
-- Stripe Payment Element
-- visual payment badges for Visa, Mastercard, and Amex
+- Stripe Payment Element ( when operates in reality)
+- visual payment badges for Visa, Mastercard,Amex, PayPal
 - premium order summary design
 
 
